@@ -1,0 +1,130 @@
+package Projectjava;
+import java.io.*;
+import java.util.*;
+
+//Creating a class to write the code
+
+public class Project {
+	public static void main(String [] args)throws IOException
+	{
+		//Welcome screen
+		
+		System.out.println("Welcome to company Lockers Pvt.Ltd");
+		System.out.println("Project for LockedMe.com website");
+		System.out.println("\tPresented by\n \tMrs. Payal\n \tFrontend used \n \tJava");
+		
+		//Menu options
+		
+		System.out.println("We are presenting some operations to perform on this page\nPress");
+		System.out.println("1: file names in the directory");
+		System.out.println("2: Details of the user interface");
+		System.out.println("3.close the application");
+		
+		//Writing while loop to repeat the menu
+		while(true)
+		{
+			
+		//taking a variable to accept the input from user
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter your choice:");
+		int ch=sc.nextInt();
+		
+		//using switch case to handle all the operations as per users choice
+		
+		switch(ch)
+		{
+			//case 1 to display all the files in the current directory
+			case 1: 
+			
+			 File f=new File ("./Project");
+			 f.mkdir();
+			 String[] cont= f.list();
+			 System.out.println("List of files and directories in the specified directory:");
+			 for(int i=0; i<cont.length;i++) 
+			 {
+			      System.out.println(cont[i]);
+			 }
+			 break;
+			 
+			 //case 2 for adding, deleting and searching the user specified file
+			 case 2:
+			 
+				 System.out.println("This menu provides the following option:");
+				 System.out.println("1. Add a file to the current directory\n 2. Delete a file from the current directory\n 3. Search for a particular file in the current directory\n 4. go to the main menu");
+				 Scanner s= new Scanner(System.in);
+				 System.out.println("Enter your choice for performing operations on files:");
+				 int c= s.nextInt();
+				 Scanner reader=new Scanner(System.in);
+				 boolean success=false;
+				 if(c==1)
+				 {
+					System.out.println("Enter filename to be created:");
+					
+					String filename=reader.nextLine();
+					File f2=new File(filename);
+							if(f2.exists())
+								System.out.println("File already exists");
+							else
+							{
+								System.out.println("No such file exists, creating now");
+								success=f2.createNewFile();
+								
+								if(success)
+									System.out.println("File created successfully");
+								else
+									System.out.println("Failed to create a new file");
+							}
+					
+				 }
+				 else if(c==2)
+				 {
+					 System.out.println("Enter filename to be deleted:");
+					 String filename=reader.nextLine();
+					 if(filename.equals(null))
+						 System.out.println("Enter the valid filename");
+					 else
+						 System.out.println("file is deleted successfully.");
+				 }
+				 else if(c==3)
+				 {
+					 System.out.println("Enter the file to be searched");
+					 Scanner f2=new Scanner(System.in);
+					 File f1=new File("./Project/");
+					 String[] filename=f1.list();
+					 
+					 if(filename==null)
+						 System.out.println("Empty directory");
+					 else
+					 {
+						 for(int i=0;i<filename.length;i++)
+						 {
+							 String fname=filename[i];
+							 System.out.println(fname);
+						 }
+				
+					 }
+					 
+				 }
+				 else if(c==4)
+					 System.out.println("Going back to the main menu");
+					 
+				 break;
+				 
+				 //case 3 for coming out of the loop
+				 case 3:
+					 System.out.println("Thank you");
+					 System.exit(0);
+			 
+				 default:
+					 System.out.println("please enter a valid choice");
+				 break;
+			}
+		
+		}
+		
+	}
+
+}
+			}
+		}
+		
